@@ -94,15 +94,28 @@ def depthFirstSearch(problem):
     """
     "*** YOUR CODE HERE ***"
     
+    fringe=util.stack() 
    
+   current_node=problem.getStartState()
    
+   fringe.push((current_node, []))  
+
+    visited = set()
+     answer=[]
+    while not fringe.isEmpty():
+        
+        current_node, answer = fringe.pop()
+        if problem.isGoalState(current_node):
+            break
+        visited.add(current_node)
+        for successor, action, stepCost in problem.getSuccessors(current_node):
+            if not successor in visited:
+                fringe.push((successor, answer  + [action]))
+       
+    print(answer)
+    return answer 
 
 
-def text(){
-
-
-
-}
   
    
     
